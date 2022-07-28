@@ -1,0 +1,49 @@
+## Changes
+## 1. Fix the rendering bug when someone use \" mixed up with "string"
+## 2. Render short options as magenta and long options as brightmagenta
+## 3. Support more variations of the usage of $
+
+
+## Here is an example for Bourne shell scripts.
+##
+syntax "SH" "\.sh$" "\.ash" "\.bashrc" "bashrc" "\.bash_aliases" "bash_aliases" "\.bash_functions" "bash_functions" "\.bash_login" "\.bash_logout" "\.bash_profile" "bash_profile" "\.profile" "revise\..+$"
+header "^#!.*/(env +)?(ba|da|a)?sh( |$)"
+magic "(POSIX|Bourne-Again) shell script.*text"
+comment "#"
+
+linter dash -n
+
+## keywords:
+color green "(^|[[:blank:]])(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)([[:blank:]]|$)"
+color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+
+## builtins:
+color brightblue "\<(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)\>"
+## not buitins:
+## cat|chmod|chown|cp|env|grep|install|ln|make|mkdir|mv|rm|sed|tar|touch
+
+## options
+## Note that matched strings of the same regex won't overlap each other in case of nanorc,
+## so regex looked like '\s(-.*\s)+' is used to avoid overlap.
+color magenta "[[:blank:]](-[^[:blank:]]*([[:blank:]]|$))+"
+color brightmagenta "[[:blank:]](--[^[:blank:]]*([[:blank:]]|$))+"
+
+## function definition
+icolor brightgreen "^\s*(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
+color green "^\s*function\s+"
+
+## variable reference and '\$'
+icolor brightred "\$\{[A-Z_][0-9A-Z_]*(//?|#|%|-|:-|\+|:\+|=|:=|\?|:\?)([^'"}\\]|"([^"\\]|\\.)*"|'[^']*'|\\.)*\}|\\\$"
+icolor brightred "\$\{?[A-Z_][0-9A-Z_]*\}?|\\\$"
+color  red       "\$\{?(\?|-|#|@|\*|\$|[0-9]+)\}?|\\\$"
+
+## string and '\*'
+## To avoid the rendering bug when escaped sequence is mixed up with quotes,
+## therefore, escaped sequence is also rendered as brightyellow in the same regex.
+color yellow ""([^"\\]|\\.)*"|'[^']*'|\\."
+
+## comment
+color cyan "(^|[[:space:]])#.*$"
+
+## suffix spaces
+color ,green "[[:space:]]+$"

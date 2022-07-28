@@ -1,0 +1,22 @@
+syntax "Inputrc" "inputrc$"
+
+color red   "\s(off|none)(\s|$)"
+color green "\s(on|1)(\s|$)"
+
+## keyword
+color blue         "^\s*\$if +(mode|term)=\<"
+color brightblue   "^\s*\$if +version *(=?=|!=|>=|>|<=|<) *[[:digit:]]+(\.[[:digit:]]+)?\s*$"
+color blue         "^\s*\$if +version *(=?=|!=|>=|>|<=|<)"
+color blue         "^\s*\$if +[a-z-]+ +(=?=|!=)"
+color brightblue   "^\s*(set|\$include|\$if|\$endif|\$else)(\s|$)"
+
+## string
+color yellow  ""(\\.|[^"\\])*"|'(\\.|[^'\\])*'"
+color magenta "\\."
+
+## comment
+color brightblack "(^|[[:blank:]])#.*$"
+
+## suffix spaces
+color ,green "[[:blank:]]+$"
+#color ,red "	+ +| +	+"
