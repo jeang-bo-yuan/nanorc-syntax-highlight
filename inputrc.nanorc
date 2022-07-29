@@ -18,7 +18,8 @@ color brightcyan "[[:blank:]]abort|accept-line|alias-expand-line|arrow-key-prefi
 
 ## string
 color yellow  ""(\\.|[^"\\])*"|'(\\.|[^'\\])*'"
-color magenta "\\."
+color red     "\\"
+color magenta "\\(C-|M-|e|\\|"|'|a|b|d|f|n|r|t|v|[0-7]{1,3}|x[[:xdigit:]]{1,2})"
 
 ## comment
 color brightblack "(^|[[:blank:]])#.*$"
