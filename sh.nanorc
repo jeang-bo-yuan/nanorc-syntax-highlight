@@ -33,14 +33,14 @@ icolor brightgreen "^\s*(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
 color green "^\s*function\s+"
 
 ## variable reference and '\$'
-icolor brightred "\$\{[A-Z_][0-9A-Z_]*(//?|#|%|-|:-|\+|:\+|=|:=|\?|:\?)([^'"}\\]|"([^"\\]|\\.)*"|'[^']*'|\\.)*\}|\\\$"
-icolor brightred "\$\{?[A-Z_][0-9A-Z_]*\}?|\\\$"
+icolor brightred "\$\{[A-Z_][0-9A-Z_]*(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
+icolor red       "\$\{?[A-Z_][0-9A-Z_]*\}?|\\\$"
 color  red       "\$\{?(\?|-|#|@|\*|\$|[0-9]+)\}?|\\\$"
 
 ## string and '\*'
 ## To avoid the rendering bug when escaped sequence is mixed up with quotes,
 ## therefore, escaped sequence is also rendered as brightyellow in the same regex.
-color yellow ""([^"\\]|\\.)*"|'[^']*'|\\."
+color yellow ""([^\\`"$]|\\.|`([^`\\]|\\.)*`|\$[^"({]|\$\(([^)\\]|\\.)*\)|\$\{([^}\\]|\\.)*\})*\$?"|'[^']*'|\\."
 
 ## comment
 color cyan "(^|[[:space:]])#.*$"
