@@ -14,13 +14,18 @@ comment "#"
 linter dash -n
 
 ## keywords:
-color green "(^|[[:blank:]])(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)([[:blank:]]|$)"
-color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+color green "(^|[[:blank:]]|`|\$\()(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)([[:blank:]]|$|\)|`)"
 
 ## builtins:
-color brightblue "\<(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)\>"
+color brightblue "(^|[[:blank:]]|`|\$\(|exec |eval )(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|[[:blank:]]|`|\))"
 ## not buitins:
 ## cat|chmod|chown|cp|env|grep|install|ln|make|mkdir|mv|rm|sed|tar|touch
+
+## symbols
+color green "(\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+color red   "(\{|\})"
+### curly braces used by function definition
+color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
 
 ## options
 ## Note that matched strings of the same regex won't overlap each other in case of nanorc,
@@ -29,8 +34,8 @@ color magenta "[[:blank:]](-[^[:blank:]]*([[:blank:]]|$))+"
 color brightmagenta "[[:blank:]](--[^[:blank:]]*([[:blank:]]|$))+"
 
 ## function definition
-icolor brightgreen "^\s*(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
-color green "^\s*function\s+"
+icolor brightgreen "(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
+color green "(^|\s|\$\(|`)function\s+"
 
 ## variable reference and '\$'
 icolor brightred "\$\{[A-Z_][0-9A-Z_]*(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
