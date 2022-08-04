@@ -14,16 +14,20 @@ comment "#"
 linter dash -n
 
 ## keywords:
-color green "(^|[[:blank:]]|`|\$\()(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)([[:blank:]]|$|\)|`)"
+color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)($|\)|`|\|\|?|&&?|;|\s|<|>)"
 
 ## builtins:
-color brightblue "(^|[[:blank:]]|`|\$\(|exec |eval )(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|[[:blank:]]|`|\))"
-## not buitins:
-## cat|chmod|chown|cp|env|grep|install|ln|make|mkdir|mv|rm|sed|tar|touch
+color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+"
+
+## wildcard
+color red   "(\{|\}|\]|\[\^?|\?|\*)"
+
+## test
+color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)"
 
 ## symbols
-color green "(\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
-color red   "(\{|\})"
+color green "(\(|\)|\;|`|\\|\$|<|>|!|=|&|\|)"
+
 ### curly braces used by function definition
 color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
 
