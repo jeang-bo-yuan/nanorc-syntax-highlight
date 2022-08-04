@@ -49,11 +49,11 @@ color  red       "\$\{?(\?|-|#|@|\*|\$|[0-9]+)\}?|\\\$"
 
 ## string and '\*'
 ## To avoid the rendering bug when escaped sequence is mixed up with quotes,
-## therefore, escaped sequence is also rendered as brightyellow in the same regex.
+## therefore, escaped sequence is also rendered as yellow in the same regex.
 color yellow ""([^\\`"$]|\\.|`([^`\\]|\\.)*`|\$[^"({]|\$\(([^)\\]|\\.)*\)|\$\{([^}\\]|\\.)*\})*\$?"|'[^']*'|\\."
 
 ## comment
-color cyan "(^|[[:space:]])#.*$"
+color brightblack "(^|[[:space:]])#.*$"
 
 ## suffix spaces
 color ,green "[[:space:]]+$"
