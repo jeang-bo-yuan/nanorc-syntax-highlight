@@ -22,14 +22,15 @@ color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|
 ## wildcard
 color red   "(\{|\}|\]|\[\^?|\?|\*)"
 
-## test
-color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)"
+	## curly braces used by function definition
+	color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
+
+	## test
+	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)"
+	color red   "\\\s[][]"
 
 ## symbols
 color green "(\(|\)|\;|`|\\|\$|<|>|!|=|&|\|)"
-
-### curly braces used by function definition
-color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
 
 ## options
 ## Note that matched strings of the same regex won't overlap each other in case of nanorc,
