@@ -19,6 +19,10 @@ color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|
 ## builtins:
 color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+"
 
+## `=' and array reference
+color green "="
+color brightred "\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
+
 ## wildcard
 color red   "(\{|\}|\]|\[\^?|\?|\*)"
 
@@ -30,7 +34,7 @@ color red   "(\{|\}|\]|\[\^?|\?|\*)"
 	color red   "\\\s[][]"
 
 ## symbols
-color green "(\(|\)|\;|`|\\|\$|<|>|!|=|&|\|)"
+color green "(\(|\)|\;|`|\\|\$|<|>|!|&|\|)"
 
 ## options
 ## Note that matched strings of the same regex won't overlap each other in case of nanorc,
@@ -43,9 +47,11 @@ icolor brightgreen "(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
 color green "(^|\s|\$\(|`)function\s+"
 
 ## variable reference and '\$'
-icolor brightred "\$\{[A-Z_][0-9A-Z_]*(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
-icolor red       "\$\{?[A-Z_][0-9A-Z_]*\}?|\\\$"
-color  red       "\$\{?(\?|-|#|@|\*|\$|[0-9]+)\}?|\\\$"
+icolor brightred "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
+icolor red       "\$\{?([A-Z_][0-9A-Z_]*|[0-9]+)\}?|\\\$"
+icolor red       "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)|\\\$"
+color  red       "\$\{?(\?|-|#|@|\*|\$)\}?|\\\$"
+color  red       "\$\{[#!]?(\?|-|#|@|\*|\$)\}|\\\$"
 
 ## string and '\*'
 ## To avoid the rendering bug when escaped sequence is mixed up with quotes,
