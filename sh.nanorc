@@ -19,6 +19,9 @@ color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|
 ## builtins:
 color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
 
+## common command
+color cyan "(^|\(|`|\|\|?|&&|;|\s)((awk|cat|chmod|chown|cp|env|git|[ef]?grep|install|ln|make|mkdir|mv|rm|sed|tar|touch|xargs)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
+
 ## `=' and array reference
 color green "="
 color brightred "\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
