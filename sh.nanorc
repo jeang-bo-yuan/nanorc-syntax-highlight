@@ -14,33 +14,33 @@ comment "#"
 linter dash -n
 
 ## keywords:
-color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)($|\)|`|\|\|?|&&?|;|\s|<|>)"
+color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)($|\)|`|\|\|?|&&?|;|\s|<|>)|\\\s"
 
 ## builtins:
-color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+"
+color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
 
 ## `=' and array reference
 color green "="
 color brightred "\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
 
-## wildcard
-color red   "(\{|\}|\]|\[\^?|\?|\*)"
+## braces
+color red   "(\{|\}|\]|\[\^?)"
 
 	## curly braces used by function definition
 	color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
 
 	## test
-	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)"
-	color red   "\\\s[][]"
-
-## symbols
-color green "(\(|\)|\;|`|\\|\$|<|>|!|&|\|)"
+	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)|\\\s"
+	## color red   "\\\s[][]"
 
 ## options
 ## Note that matched strings of the same regex won't overlap each other in case of nanorc,
 ## so regex looked like '\s(-.*\s)+' is used to avoid overlap.
-color magenta "[[:blank:]](-[^[:blank:]]*([[:blank:]]|$))+"
-color brightmagenta "[[:blank:]](--[^[:blank:]]*([[:blank:]]|$))+"
+color magenta "\s(-[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+"
+color brightmagenta "\s(--[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+"
+
+## symbols
+color green "(\(|\)|\;|`|\\|\$|<|>|!|&|\||"|')"
 
 ## function definition
 icolor brightgreen "(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
