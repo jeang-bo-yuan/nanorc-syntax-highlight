@@ -60,6 +60,7 @@ color  red       "\$\{[#!]?(\?|-|#|@|\*|\$)\}|\\\$"
 ## To avoid the rendering bug when escaped sequence is mixed up with quotes,
 ## therefore, escaped sequence is also rendered as yellow in the same regex.
 color yellow ""([^\\`"$]|\\.|`([^`\\]|\\.)*`|\$[^"({]|\$\(([^)\\]|\\.)*\)|\$\{([^}\\]|\\.)*\})*\$?"|'[^']*'|\\."
+color ,yellow "\\[[:blank:]]"
 
 ## comment
 color italic,brightblack "(^|[[:space:]])#.*$"
