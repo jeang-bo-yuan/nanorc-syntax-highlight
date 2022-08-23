@@ -14,17 +14,17 @@ comment "#"
 linter dash -n
 
 ## keywords:
-color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)($|\)|`|\|\|?|&&?|;|\s|<|>)|\\\s"
+color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)($|\)|`|\|\|?|&&?|;|\s|<|>)|\\."
 
 ## builtins:
-color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
+color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\."
 
 ## common command
-color cyan "(^|\(|`|\|\|?|&&|;|\s)((awk|cat|chmod|chown|cp|env|git|[ef]?grep|install|ln|make|mkdir|mv|rm|sed|tar|touch|xargs)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
+color cyan "(^|\(|`|\|\|?|&&|;|\s)((awk|cat|chmod|chown|cp|env|git|[ef]?grep|head|install|ln|ls|make|mkdir|mv|nl|od|rm|sed|tail|tar|touch|tr|xargs)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\."
 
 ## `=' and array reference
 color green "="
-color brightred "\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
+color brightred "\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)|\\."
 
 ## braces
 color red   "(\{|\}|\]|\[\^?)"
@@ -33,7 +33,7 @@ color red   "(\{|\}|\]|\[\^?)"
 	color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
 
 	## test
-	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)|\\\s"
+	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)|\\."
 	## color red   "\\\s[][]"
 
 ## options
@@ -62,7 +62,7 @@ color  red       "\$\{[#!]?(\?|-|#|@|\*|\$)\}|\\\$"
 color yellow ""([^\\`"$]|\\.|`([^`\\]|\\.)*`|\$[^"({]|\$\(([^)\\]|\\.)*\)|\$\{([^}\\]|\\.)*\})*\$?"|'[^']*'|\\."
 
 ## comment
-color brightblack "(^|[[:space:]])#.*$"
+color italic,brightblack "(^|[[:space:]])#.*$"
 
 ## suffix spaces
 color ,green "[[:space:]]+$"
