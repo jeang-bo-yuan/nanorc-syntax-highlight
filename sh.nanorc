@@ -51,10 +51,10 @@ color green "(^|\s|\$\(|`)function\s+"
 
 ## variable reference and '\$'
 icolor brightred "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
-icolor red       "\$\{?([A-Z_][0-9A-Z_]*|[0-9]+)\}?|\\\$"
-icolor red       "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)|\\\$"
-color  red       "\$\{?(\?|-|#|@|\*|\$)\}?|\\\$"
-color  red       "\$\{[#!]?(\?|-|#|@|\*|\$)\}|\\\$"
+icolor red       "\$([A-Z_][0-9A-Z_]*|[0-9])|\\\$"
+icolor red       "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)\}?|\\\$"
+color  red       "\$(\?|-|#|@|\*|\$)|\\\$"
+color  red       "\$\{[#!]?(\?|-|#|@|\*|\$)\}?|\\\$"
 
 ## string and '\*'
 ## To avoid the rendering bug when escaped sequence is mixed up with quotes,
