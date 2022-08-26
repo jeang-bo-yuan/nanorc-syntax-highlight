@@ -65,5 +65,8 @@ color ,yellow "\\[[:blank:]]"
 ## comment
 color italic,brightblack "(^|[[:space:]])#.*$"
 
+## shebang
+color green "^#!.*$"
+
 ## suffix spaces
 color ,green "[[:space:]]+$"
