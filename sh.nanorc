@@ -39,8 +39,8 @@ color red   "(\{|\}|\]|\[\^?)"
 ## options
 ## Note that matched strings of the same regex won't overlap each other in case of nanorc,
 ## so regex looked like '\s(-.*\s)+' is used to avoid overlap.
-color magenta "\s(-[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+"
-color brightmagenta "\s(--[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+"
+color magenta "\s(-[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
+color brightmagenta "\s(--[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
 
 ## symbols
 color green "(\(|\)|\;|`|\\|\$|<|>|!|&|\||"|')"
