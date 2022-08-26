@@ -6,7 +6,7 @@
 
 ## Here is an example for Bourne shell scripts.
 ##
-syntax "SH" "\.sh$" "\.ash" "\.?bashrc" "\.?bash_aliases" "\.?bash_functions" "\.bash_login" "\.bash_logout" "\.?(bash_)?profile" "revise\..+$"
+syntax "sh" "\.sh$" "\.ash" "\.?bashrc" "\.?bash_aliases" "\.?bash_functions" "\.bash_login" "\.bash_logout" "\.?(bash_)?profile" "revise\..+$"
 header "^#!.*/(env +)?(ba|da|a)?sh( |$)"
 magic "(POSIX|Bourne-Again) shell script.*text"
 comment "#"
