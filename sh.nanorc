@@ -26,14 +26,14 @@ color cyan "(^|\(|`|\|\|?|&&|;|\s)((awk|cat|chmod|chown|cp|env|git|[ef]?grep|hea
 color green "="
 
 ## special operator after array reference
-icolor brightred "\$\{[#!]?[a-z_][a-z_0-9]*\[([0-9]+|\*|@)\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
-icolor normal "\$\{[#!]?[a-z_][a-z_0-9]*\[([0-9]+|\*|@)\]"
+icolor brightred "\$\{[#!]?[a-z_][a-z_0-9]*\[([0-9]+|\*|@)\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)|\\\$"
+icolor normal "\$\{[#!]?[a-z_][a-z_0-9]*\[([0-9]+|\*|@)\]|\\\$"
 
 ## braces
 color red   "(\{|\}|\]|\[\^?)"
 
 	## curly braces used by function definition
-	color green "^[[:blank:]]*(\{|\})[[:blank:]]*$" "\(\)[[:blank:]]*\{"
+	color green "^[[:blank:]]*[{}][[:blank:]]*$" "\(\)[[:blank:]]*\{"
 
 	## test
 	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)|\\."
@@ -50,7 +50,7 @@ color green "(\(|\)|\;|`|\\|\$|<|>|!|&|\||"|')"
 
 ## function definition
 icolor brightgreen "(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
-color green "(^|\s|\$\(|`)function\s+"
+color green "(^|\s|\(|`)function\s+"
 
 ## variable reference and '\$'
 icolor brightred "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
