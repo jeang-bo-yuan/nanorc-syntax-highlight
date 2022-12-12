@@ -1,0 +1,33 @@
+syntax c "\.c$"
+comment "/*|*/"
+
+## Preprocessor
+color brightblue "\\$"
+color yellow "^#include\s+<.*>$"
+color yellow "^#include\s+\".*\"$"
+color brightblue "^#(define|undef|error|include|line|pragma)" "#"
+color brightblue "^#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
+
+## Macro
+color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
+color brightred "\<(true|false|__cplusplus|__func__)\>"
+
+## type
+color lightgreen "\<([[:alpha:]_][[:alnum:]_]*_t|bool)\>"
+color green "\<(void|int|signed|unsigned|short|long|float|double|char|wchar_t|_Bool)\>"
+
+## type and storage-duration qualifier
+color brightmagenta "\<(const|restrict|volatile|auto|extern|register|static)\>"
+
+## flow
+color yellow "\<(while|for|do|if|else|switch|case|default)\>"
+
+## other keywords
+color magenta "\<(sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
+
+## Suffix blank
+color ,lightgreen "\s+$"
+
+## Comment
+color italic,lightblack "//.*$"
+color italic,lightblack start="/\*" end="\*/"
