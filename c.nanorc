@@ -1,10 +1,13 @@
 syntax c "\.c$"
 comment "/*|*/"
 
+## Mark backslash placed in wrong place as red
+color red "\\"
+
 ## Preprocessor
 color brightblue "\\$"
-color yellow "^#include\s+<.*>$"
-color yellow "^#include\s+\".*\"$"
+color brightyellow "^#include\s+<.*>$"
+color brightyellow "^#include\s+\".*\"$"
 color brightblue "^#(define|undef|error|include|line|pragma)" "#"
 color brightblue "^#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
 
@@ -19,11 +22,20 @@ color green "\<(void|int|signed|unsigned|short|long|float|double|char|wchar_t|_B
 ## type and storage-duration qualifier
 color brightmagenta "\<(const|restrict|volatile|auto|extern|register|static)\>"
 
+## label
+color cyan "^\s*[[:alpha:]_][[:alnum:]_]*\s*:"
+color normal ":"
+
 ## flow
 color yellow "\<(while|for|do|if|else|switch|case|default)\>"
 
 ## other keywords
 color magenta "\<(sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
+
+## char, string, and escape sequence
+color brightyellow "'([^'\]|\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
+color brightyellow "\"([^"\]|\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))*\""
+color cyan "\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2})"
 
 ## Suffix blank
 color ,lightgreen "\s+$"
