@@ -5,7 +5,7 @@ comment "/*|*/"
 color red "\\"
 
 ## Number (int and floating-point)
-icolor blue "[+-]?\<([1-9][0-9]*|0x[[:xdigit:]]+|0[0-7]*)[UL]*\>"
+icolor blue "[+-]?\<([1-9][0-9]*|0x[[:xdigit:]]+|0[0-7]*|0b[01]+)[UL]*\>"
 icolor blue "[+-]?\<[0-9]+\.(e[+-]?[0-9]+\>)?"
 icolor blue "[+-]?\.[0-9]+(e[+-]?[0-9]+)?\>"
 
@@ -21,11 +21,11 @@ color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
 color brightred "\<(true|false|__cplusplus|__func__)\>"
 
 ## type
-color lightgreen "\<([[:alpha:]_][[:alnum:]_]*_t|bool)\>"
+color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool)\>"
 color green "\<(void|int|signed|unsigned|short|long|float|double|char|wchar_t|_Bool)\>"
 
 ## type and storage-duration qualifier
-color brightmagenta "\<(const|restrict|volatile|auto|extern|register|static)\>"
+color brightgreen "\<(const|restrict|volatile|auto|extern|register|static)\>"
 
 ## label
 color cyan "^\s*[[:alpha:]_][[:alnum:]_]*\s*:"
