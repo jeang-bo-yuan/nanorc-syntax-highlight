@@ -8,6 +8,12 @@ color red "\\"
 icolor blue "[+-]?\<([1-9][0-9]*|0x[[:xdigit:]]+|0[0-7]*|0b[01]+)[UL]*\>"
 icolor blue "[+-]?\<[0-9]+\.(e[+-]?[0-9]+\>)?"
 icolor blue "[+-]?\.[0-9]+(e[+-]?[0-9]+)?\>"
+  ## Unmark +- used as operator
+icolor normal "[[:alnum:]]\s*[+-]"
+  ## mark number again
+icolor blue "\<([1-9][0-9]*|0x[[:xdigit:]]+|0[0-7]*|0b[01]+)\>"
+icolor blue "\<[0-9]+\.e[+-]?[0-9]+\>"
+icolor blue "\.[0-9]+e[+-]?[0-9]+\>"
 
 ## Preprocessor
 color brightblue "\\$"
