@@ -17,8 +17,8 @@ icolor blue "\.[0-9]+e[+-]?[0-9]+\>"
 
 ## Preprocessor
 color brightblue "\\$"
-color brightyellow "^#include\s+<.*>$"
-color brightyellow "^#include\s+\".*\"$"
+color brightyellow "^#include\s+<.*>\s*(//.*|/\*.*)?$"
+color brightyellow "^#include\s+\".*\"\s*(//.*|/\*.*)?$"
 color brightblue "^#(define|undef|error|include|line|pragma)" "#"
 color brightblue "^#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
 
