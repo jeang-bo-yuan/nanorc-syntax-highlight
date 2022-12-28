@@ -26,6 +26,9 @@ color brightblue "^#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
 ## Macro
 color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
 color brightred "\<(true|false|__cplusplus|__func__)\>"
+  ## defined in <inttypes.h>
+color brightred "\<PRI[diouxX]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
+color brightred "\<SCN[dioux]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
 
 ## type
 color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool)\>"
