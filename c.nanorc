@@ -31,11 +31,11 @@ color brightred "\<PRI[diouxX]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
 color brightred "\<SCN[dioux]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
 
 ## type
-color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool)\>"
+color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool|FILE)\>"
 color green "\<(void|int|signed|unsigned|short|long|float|double|char|wchar_t|_Bool)\>"
 
-## type and storage-duration qualifier
-color brightgreen "\<(const|restrict|volatile|auto|extern|register|static)\>"
+## type qualifier
+color brightgreen "\<(const|restrict|volatile)\>"
 
 ## label
 color cyan "^\s*[[:alpha:]_][[:alnum:]_]*\s*:"
@@ -44,8 +44,9 @@ color normal ":"
 ## flow
 color yellow "\<(while|for|do|if|else|switch|case|default)\>"
 
-## other keywords
-color magenta "\<(sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
+## storage-duration qualifier and other keywords
+color magenta "\<(auto|extern|register|static)\>"
+color magenta "\<(inline|sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
 
 ## char, string, and escape sequence
 color brightyellow "'([^'\]|\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
