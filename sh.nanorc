@@ -6,7 +6,7 @@
 
 ## Here is an example for Bourne shell scripts.
 ##
-syntax "SH" "\.sh$" "\.ash" "\.?bashrc" "\.?bash_aliases" "\.?bash_functions" "\.bash_login" "\.bash_logout" "\.?(bash_)?profile" "revise\..+$"
+syntax "sh" "\.sh$" "\.ash" "\.?bashrc" "\.?bash_aliases" "\.?bash_functions" "\.bash_login" "\.bash_logout" "\.?(bash_)?profile" "revise\..+$"
 header "^#!.*/(env +)?(ba|da|a)?sh( |$)"
 magic "(POSIX|Bourne-Again) shell script.*text"
 comment "#"
@@ -14,36 +14,62 @@ comment "#"
 linter dash -n
 
 ## keywords:
-color green "(^|[[:blank:]])(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)([[:blank:]]|$)"
-color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+color green "(^|\(|`|\|\|?|&&|;|\s)(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)($|\)|`|\|\|?|&&?|;|\s|<|>)|\\."
 
 ## builtins:
-color brightblue "\<(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)\>"
-## not buitins:
-## cat|chmod|chown|cp|env|grep|install|ln|make|mkdir|mv|rm|sed|tar|touch
+color brightblue "(^|\(|`|\|\|?|&&|;|\s)((alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\."
+
+## common command
+color cyan "(^|\(|`|\|\|?|&&|;|\s)((awk|cat|chmod|chown|cp|env|git|[ef]?grep|head|install|ln|ls|make|mkdir|mv|nl|od|rm|sed|tail|tar|touch|tr|xargs)($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\."
+
+## `='
+color green "="
+
+## special operator after array reference
+icolor brightred "\$\{[#!]?[a-z_][a-z_0-9]*\[([0-9]+|\*|@)\](//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)|\\\$"
+icolor normal "\$\{[#!]?[a-z_][a-z_0-9]*\[([0-9]+|\*|@)\]|\\\$"
+
+## braces
+color red   "(\{|\}|\]|\[\^?)"
+
+	## curly braces used by function definition
+	color green "^[[:blank:]]*[{}][[:blank:]]*$" "\(\)[[:blank:]]*\{"
+
+	## test
+	color green "(^|\(|`|\|\|?|&&|;|\s)[][]($|\)|`|\|\|?|&&?|;|\s|<|>)|\\."
+	## color red   "\\\s[][]"
 
 ## options
 ## Note that matched strings of the same regex won't overlap each other in case of nanorc,
 ## so regex looked like '\s(-.*\s)+' is used to avoid overlap.
-color magenta "[[:blank:]](-[^[:blank:]]*([[:blank:]]|$))+"
-color brightmagenta "[[:blank:]](--[^[:blank:]]*([[:blank:]]|$))+"
+color magenta "\s(-[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
+color brightmagenta "\s(--[^[:blank:])|&;<>]*($|\)|`|\|\|?|&&?|;|\s|<|>))+|\\\s"
+
+## symbols
+color green "(\(|\)|\;|`|\\|\$|<|>|!|&|\||"|')"
 
 ## function definition
-icolor brightgreen "^\s*(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
-color green "^\s*function\s+"
+icolor brightgreen "(function\s+)?[A-Z_][0-9A-Z_]*\s*\(\)"
+color green "(^|\s|\(|`)function\s+"
 
 ## variable reference and '\$'
-icolor brightred "\$\{[A-Z_][0-9A-Z_]*(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
-icolor red       "\$\{?[A-Z_][0-9A-Z_]*\}?|\\\$"
-color  red       "\$\{?(\?|-|#|@|\*|\$|[0-9]+)\}?|\\\$"
+icolor brightred "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)(//?|##?|%%?|-|:-|\+|:\+|=|:=|\?|:\?)"
+icolor red       "\$([A-Z_][0-9A-Z_]*|[0-9])|\\\$"
+icolor red       "\$\{[#!]?([A-Z_][0-9A-Z_]*|[0-9]+)\}?|\\\$"
+color  red       "\$(\?|-|#|@|\*|\$)|\\\$"
+color  red       "\$\{[#!]?(\?|-|#|@|\*|\$)\}?|\\\$"
 
 ## string and '\*'
 ## To avoid the rendering bug when escaped sequence is mixed up with quotes,
-## therefore, escaped sequence is also rendered as brightyellow in the same regex.
+## therefore, escaped sequence is also rendered as yellow in the same regex.
 color yellow ""([^\\`"$]|\\.|`([^`\\]|\\.)*`|\$[^"({]|\$\(([^)\\]|\\.)*\)|\$\{([^}\\]|\\.)*\})*\$?"|'[^']*'|\\."
+color ,yellow "\\[[:blank:]]"
 
 ## comment
-color cyan "(^|[[:space:]])#.*$"
+color italic,brightblack "(^|[[:space:]])#.*$"
+
+## shebang
+color green "^#!.*$"
 
 ## suffix spaces
 color ,green "[[:space:]]+$"
