@@ -52,9 +52,11 @@ color magenta "\<(auto|extern|register|static)\>"
 color magenta "\<(inline|sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
 
 ## char, string, and escape sequence
-color brightyellow "'([^'\]|\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
-color brightyellow "\"([^"\]|\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))*\""
-color cyan "\\([abfnrtv\'"?]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2})"
+## \e or \x1B or \033 -> Escape, beginning of ANSI escape sequence
+## \e[ or \x1B[ or \033[ -> beginning of CSI sequence
+color brightyellow "'([^'\]|\\([abfnrtv\'"?e]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}|(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?))'"
+color brightyellow "\"([^"\]|([^'\]|\\([abfnrtv\'"?e]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}|(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?)))*\""
+color cyan "\\([abfnrtv\'"?e]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}|(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?)"
 
 ## Suffix blank
 color ,lightgreen "\s+$"
