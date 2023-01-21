@@ -51,12 +51,15 @@ color yellow "\<(while|for|do|if|else|switch|case|default)\>"
 color magenta "\<(auto|extern|register|static)\>"
 color magenta "\<(inline|sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
 
-## char, string, and escape sequence
+## char, string, and escape character/sequence
 ## \e or \x1B or \033 -> Escape, beginning of ANSI escape sequence
 ## \e[ or \x1B[ or \033[ -> beginning of CSI sequence
-color brightyellow "'([^'\]|\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+|(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?))'"
-color brightyellow "\"([^"\]|\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+|(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?))*\""
-color cyan "\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+|(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?)"
+color brightyellow "'([^'\]|\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+))'"
+color brightyellow "\"([^"\]|\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+))*\""
+##    CSI sequence
+color brightyellow,cyan "\\(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?"
+##    Escape character
+color cyan "\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+)"
 
 ## Suffix blank
 color ,lightgreen "\s+$"
