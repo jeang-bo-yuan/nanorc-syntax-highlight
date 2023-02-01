@@ -15,9 +15,10 @@ icolor blue "[+-]?\.[0-9]+(e[+-]?[0-9]+)?[fL]?\>"
   ## Unmark +- used for plus and minus
 icolor normal "[[:alnum:]]\s*[+-]"
   ## mark number again
-icolor blue "\<([1-9][0-9]*|0x[[:xdigit:]]+|0[0-7]*|0b[01]+)[UL]*\>"
-icolor blue "\<[0-9]+\.(e[+-]?[0-9]+)?[fL]?\>"
-icolor blue "\.[0-9]+(e[+-]?[0-9]+)?[fL]?\>"
+  ## mark the +- behind "return" keyword
+icolor blue "\<(return\s+[+-])?([1-9][0-9]*|0x[[:xdigit:]]+|0[0-7]*|0b[01]+)[UL]*\>"
+icolor blue "\<(return\s+[+-])?[0-9]+\.(e[+-]?[0-9]+)?[fL]?\>"
+icolor blue "(\<return\s+[+-])?\.[0-9]+(e[+-]?[0-9]+)?[fL]?\>"
 
 ## Preprocessor
 color brightblue "\\$"
