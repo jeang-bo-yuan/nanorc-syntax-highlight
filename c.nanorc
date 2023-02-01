@@ -1,3 +1,4 @@
+## std: c11
 syntax c "\.c$"
 comment "/*|*/"
 
@@ -26,9 +27,11 @@ color red "^#error.*$"
 color brightblue "^#(define|undef|error|include|line|pragma)" "#"
 color brightblue "^#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
 
-## Macro
+## Macro and constants
 color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
 color brightred "\<(true|false|__cplusplus|__func__)\>"
+  ## constant in <stdio.h>
+color brightred "\<std(in|out|err)\>"
   ## defined in <inttypes.h>
 color brightred "\<PRI[diouxX]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
 color brightred "\<SCN[dioux]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
@@ -42,6 +45,7 @@ color brightgreen "\<(const|restrict|volatile)\>"
 
 ## label
 color cyan "^\s*[[:alpha:]_][[:alnum:]_]*\s*:"
+color cyan "\<goto\s+[[:alpha:]_][[:alnum:]_]*"
 color normal ":"
 
 ## flow
