@@ -1,8 +1,9 @@
-## Syntax highlighting for C and C++ files.
+## Syntax highlighting for C++ files.
 
-syntax cpp "\.([ch](pp|xx)|C|cc|c\+\+|cu|H|hh|ii?)$"
-header "-\*-.*\<C(\+\+)?((;|[[:blank:]]).*)?-\*-"
-magic "^(C|C\+\+) (source|program)"
+syntax cpp "\.([ch](pp|xx)|C|cc|c\+\+|H|hh|ii)$"
+## File Variable in Emacs
+header "-\*-.*\<mode: c\+\+;.*-\*-"
+magic "^C\+\+ (source|program)"
 comment "//"
 
 # Constants.

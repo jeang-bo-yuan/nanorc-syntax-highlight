@@ -1,5 +1,10 @@
+## Syntax Highlight for C language
 ## std: c11
-syntax c "\.c$"
+
+syntax c "\.[chi]$"
+## File Variable in Emacs
+header "-\*-.*\<mode: c;.*-\*-"
+magic "^C (source|program)"
 comment "/*|*/"
 
 ## Mark backslash placed in wrong place as red
