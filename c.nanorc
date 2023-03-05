@@ -29,9 +29,9 @@ icolor blue "(\<return\s+[+-])?\.[0-9]+(e[+-]?[0-9]+)?[fL]?\>"
 color brightblue "\\$"
 color brightyellow "^\s*#include\s+<.*>\s*(//.*|/\*.*)?$"
 color brightyellow "^\s*#include\s+\".*\"\s*(//.*|/\*.*)?$"
-color red "^\s*#error.*$"
-color brightblue "^\s*#(define|undef|error|include|line|pragma)" "#"
-color brightblue "^\s*#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
+color red "^\s*#error\s.*$"
+color brightblue "^\s*#(define|undef|error|include|line|pragma)\s" "#"
+color brightblue "^\s*#(if|ifdef|ifndef|elif|else|endif)\s" "\<defined\>"
 
 ## Macro and constants
 color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
