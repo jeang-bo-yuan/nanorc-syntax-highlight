@@ -32,6 +32,7 @@ color brightyellow "^\s*#include\s+\".*\"\s*(//.*|/\*.*)?$"
 color red "^\s*#error\s.*$"
 color brightblue "^\s*#(define|undef|error|include|line|pragma)\s" "#"
 color brightblue "^\s*#(if|ifdef|ifndef|elif|else|endif)\s" "\<defined\>"
+color brightblue "^\s*_Pragma"
 
 ## Macro and constants
 color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
@@ -50,17 +51,17 @@ color normal ":"
 ## type
 color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool|FILE)\>"
 color green "\<(void|int|signed|unsigned|short|long|float|double|char)\>"
-color green "\<_(Atomic|Bool|Complex|Imaginary|Thread_local)\>"
+color green "\<_(Atomic|Bool|Complex|Imaginary)\>"
 color brightgreen "\<(const|restrict|volatile)\>"
 
 ## flow
 color yellow "\<(while|for|do|if|else|switch|case|default)\>"
 
 ## storage-duration qualifier and other keywords
-color magenta "\<(auto|extern|register|static)\>"
+color magenta "\<(auto|extern|register|static|_Thread_local)\>"
 color magenta "\<(inline|sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
 color magenta "\<(__asm__|asm|fortran)\>"
-color magenta "\<_(Alignas|Alignof|Generic|Noreturn|Pragma|Static_assert)\>"
+color magenta "\<_(Alignas|Alignof|Generic|Noreturn|Static_assert)\>"
 
 ## char, string, and escape character/sequence
 ## \e or \x1B or \033 -> Escape, beginning of ANSI escape sequence

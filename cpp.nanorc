@@ -45,10 +45,11 @@ color normal ":"
 # Types and related keywords.
 color green "\<(bool|char|double|float|int|long|short|signed|unsigned|void)\>"
 color green "\<([[:alpha:]_][[:alnum:]_]*_t|FILE)\>"
-color lightgreen "\<(const|mutable|restrict|volatile)\>"
-color green "\<_(Atomic|Bool|Complex|Imaginary|Thread_local)\>"
-color magenta "\<_(Alignas|Alignof|Generic|Noreturn|Pragma|Static_assert)\>"
-color magenta "\<(__asm__|asm|auto|class|enum|explicit|extern|false|friend|inline|namespace|override|private|protected|public|register|sizeof|static|struct|typedef|union||template|this|true|typename|using|virtual|operator|new|delete)\>"
+color lightgreen "\<(const|volatile)\>"
+color magenta "\<(alignas|alignof|static_assert|thread_local)\>"
+color magenta "\<(const|dynamic|reinterpret|static)_cast\>"
+color magenta "\<(and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|xor|xor_eq)\>"
+color magenta "\<(__asm__|asm|auto|class|decltype|delete|enum|explicit|extern|false|final|friend|inline|mutable|namespace|new|noexcept|operator|override|private|protected|public|register|sizeof|static|struct|template|this|true|typedef|typeid|typename|union|using|virtual)\>"
 
 # Flow control.
 color brightyellow "\<(if|else|for|while|do|switch|case|default)\>"
@@ -65,6 +66,7 @@ color brightyellow "^\s*#include\s+\".*\"\s*(//.*|/\*.*)?$"
 color red "^\s*#error\s.*$"
 color brightblue "^\s*#(define|undef|error|include|line|pragma)\s" "#"
 color brightblue "^\s*#(if|ifdef|ifndef|elif|else|endif)\s" "\<defined\>"
+color brightblue "^\s*_Pragma"
 
 ## char, string, and escape character/sequence
 ## \e or \x1B or \033 -> Escape, beginning of ANSI escape sequence
