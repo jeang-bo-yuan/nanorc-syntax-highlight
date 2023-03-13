@@ -45,7 +45,7 @@ color normal ":"
 # Types and related keywords.
 color green "\<(bool|char|double|float|int|long|short|signed|unsigned|void)\>"
 color green "\<([[:alpha:]_][[:alnum:]_]*_t|FILE)\>"
-color green "\<(const|mutable|restrict|volatile)\>"
+color lightgreen "\<(const|mutable|restrict|volatile)\>"
 color green "\<_(Atomic|Bool|Complex|Imaginary|Thread_local)\>"
 color magenta "\<_(Alignas|Alignof|Generic|Noreturn|Pragma|Static_assert)\>"
 color magenta "\<(__asm__|asm|auto|class|enum|explicit|extern|false|friend|inline|namespace|override|private|protected|public|register|sizeof|static|struct|typedef|union||template|this|true|typename|using|virtual|operator|new|delete)\>"
@@ -77,8 +77,8 @@ color brightyellow,cyan "\\(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?"
 color cyan "\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+)"
 
 # Comments.
-color brightblue "//.*"
-color brightblue start="/\*" end="\*/"
+color italic,lightblack "//.*"
+color italic,lightblack start="/\*" end="\*/"
 
 # Trailing whitespace.
 color ,green "[[:space:]]+$"
