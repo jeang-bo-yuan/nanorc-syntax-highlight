@@ -1,5 +1,10 @@
+## Syntax Highlight for C language
 ## std: c11
-syntax c "\.c$"
+
+syntax c "\.[chi]$"
+## File Variable in Emacs
+header "-\*-.*\<mode: c;.*-\*-"
+magic "^C (source|program)"
 comment "/*|*/"
 
 ## Mark backslash placed in wrong place as red
@@ -22,39 +27,41 @@ icolor blue "(\<return\s+[+-])?\.[0-9]+(e[+-]?[0-9]+)?[fL]?\>"
 
 ## Preprocessor
 color brightblue "\\$"
-color brightyellow "^#include\s+<.*>\s*(//.*|/\*.*)?$"
-color brightyellow "^#include\s+\".*\"\s*(//.*|/\*.*)?$"
-color red "^#error.*$"
-color brightblue "^#(define|undef|error|include|line|pragma)" "#"
-color brightblue "^#(if|ifdef|ifndef|elif|else|endif)" "\<defined\>"
+color brightyellow "^\s*#include\s+<.*>\s*(//.*|/\*.*)?$"
+color brightyellow "^\s*#include\s+\".*\"\s*(//.*|/\*.*)?$"
+color red "^\s*#error\s.*$"
+color brightblue "^\s*#(define|undef|error|include|line|pragma)\s" "#"
+color brightblue "^\s*#(if|ifdef|ifndef|elif|else|endif)\s" "\<defined\>"
+color brightblue "^\s*_Pragma"
 
 ## Macro and constants
 color brightred "\<[[:upper:]_][[:upper:][:digit:]_]*\>"
 color brightred "\<(true|false|__cplusplus|__func__)\>"
-  ## constant in <stdio.h>
+  ## constants in <stdio.h>
 color brightred "\<std(in|out|err)\>"
   ## defined in <inttypes.h>
 color brightred "\<PRI[diouxX]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
 color brightred "\<SCN[dioux]((LEAST|FAST)?[[:digit:]]+|MAX|PTR)\>"
-
-## type
-color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool|FILE)\>"
-color green "\<(void|int|signed|unsigned|short|long|float|double|char|wchar_t|_Bool)\>"
-
-## type qualifier
-color brightgreen "\<(const|restrict|volatile)\>"
 
 ## label
 color cyan "^\s*[[:alpha:]_][[:alnum:]_]*\s*:"
 color cyan "\<goto\s+[[:alpha:]_][[:alnum:]_]*"
 color normal ":"
 
+## type
+color green "\<([[:alpha:]_][[:alnum:]_]*_t|bool|FILE)\>"
+color green "\<(void|int|signed|unsigned|short|long|float|double|char)\>"
+color green "\<_(Atomic|Bool|Complex|Imaginary)\>"
+color brightgreen "\<(const|restrict|volatile)\>"
+
 ## flow
 color yellow "\<(while|for|do|if|else|switch|case|default)\>"
 
 ## storage-duration qualifier and other keywords
-color magenta "\<(auto|extern|register|static)\>"
+color magenta "\<(auto|extern|register|static|_Thread_local)\>"
 color magenta "\<(inline|sizeof|typedef|goto|break|continue|return|enum|struct|union)\>"
+color magenta "\<(__asm__|asm|fortran)\>"
+color magenta "\<_(Alignas|Alignof|Generic|Noreturn|Static_assert)\>"
 
 ## char, string, and escape character/sequence
 ## \e or \x1B or \033 -> Escape, beginning of ANSI escape sequence
@@ -66,9 +73,10 @@ color brightyellow,cyan "\\(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?"
 ##    Escape character
 color cyan "\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+)"
 
+## Comment
+color italic,lightblack "//.*|/\*.*\*/"
+color italic,lightblack start="//.*[\]$" end="(^|[^\])$"
+color italic,lightblack start="/\*" end="\*/"
+
 ## Suffix blank
 color ,lightgreen "\s+$"
-
-## Comment
-color italic,lightblack "//.*$"
-color italic,lightblack start="/\*" end="\*/"
