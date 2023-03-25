@@ -79,8 +79,9 @@ color brightyellow,cyan "\\(e|x1[bB]|0?33)\[([;0-9]*[ABCDEFGHJKSTfmin])?"
 color cyan "\\([abfnrtv\'"?e]|x[[:xdigit:]]+|[0-7]+)"
 
 # Comments.
-color italic,lightblack "//.*"
+color italic,lightblack "//.*|/\*.*\*/"
+color italic,lightblack start="//.*[\]$" end="(^|[^\])$"
 color italic,lightblack start="/\*" end="\*/"
 
 # Trailing whitespace.
-color ,green "[[:space:]]+$"
+color ,lightgreen "[[:space:]]+$"
