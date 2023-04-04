@@ -1,0 +1,24 @@
+## Syntax Highlight for ngspice netlist
+syntax sp "\.sp$"
+
+comment "*"
+
+## Color only first line. First line is always treated as comment.
+color lightblue "."
+color normal start="$" end="^.+$"
+
+## Special Character
+color yellow "^\s*[+]\s"
+color yellow "[,=()]"
+
+## Number
+icolor red "[+-]?\<[[:digit:]]+(\.[[:digit:]]+)?(e[+-]?[[:digit:]]+|[TGKmunpfa]|mil|Meg)?"
+
+## Dot Command
+icolor yellow "^\s*\.(AC|CONTROL|CSPARAM|DC|DISTO|ELSE|ELSEIF|END|ENDC|ENDIF|ENDS|FOUR|FUNC|GLOBAL|IC|IF|INCLUDE|LIB|MEAS|MODEL|NODESET|NOISE|OP|OPTIONS|PARAM|PLOT|PRINT|PROBE|PSS|PZ|SAVE|SENS|SP|SUBCKT|TEMP|TF|TITLE|TRAN|WIDTH)\>"
+
+## Comment
+color lightblue "^\s*[*].*"
+
+## End-Of-Line Comment
+color lightblue "(//|[$;]\s).*"
