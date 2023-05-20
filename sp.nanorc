@@ -1,5 +1,5 @@
 ## Syntax Highlight for ngspice netlist
-syntax sp "\.sp$"
+syntax sp "\.(sp|cir)$"
 
 comment "*"
 
@@ -15,7 +15,9 @@ color yellow "[,=()]"
 icolor red "[+-]?\<[[:digit:]]+(\.[[:digit:]]+)?(e[+-]?[[:digit:]]+|[TGKmunpfa]|mil|Meg)?"
 
 ## Dot Command
-icolor yellow "^\s*\.(AC|CONTROL|CSPARAM|DC|DISTO|ELSE|ELSEIF|END|ENDC|ENDIF|ENDS|FOUR|FUNC|GLOBAL|IC|IF|INCLUDE|LIB|MEAS|MODEL|NODESET|NOISE|OP|OPTIONS|PARAM|PLOT|PRINT|PROBE|PSS|PZ|SAVE|SENS|SP|SUBCKT|TEMP|TF|TITLE|TRAN|WIDTH)\>"
+icolor lightblue "^\s*\.TITLE\s+.*"
+icolor yellow "^\s*\.(PLOT|PRINT)\s+(DC|AC|TRAN|NOISE|DISTO)\>"
+icolor yellow "^\s*\.(AC|CONTROL|CSPARAM|DC|DISTO|ELSE|ELSEIF|END|ENDC|ENDIF|ENDS|FOUR|FUNC|GLOBAL|IC|IF|INCLUDE|LIB|MEAS|MODEL|NODESET|NOISE|OP|OPTIONS|PARAM|PROBE|PSS|PZ|SAVE|SENS|SP|SUBCKT|TEMP|TF|TITLE|TRAN|WIDTH)\>"
 
 ## Comment
 color lightblue "^\s*[*].*"
