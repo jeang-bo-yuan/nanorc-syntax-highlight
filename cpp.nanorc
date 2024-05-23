@@ -49,7 +49,7 @@ color lightgreen "\<(const|volatile)\>"
 color magenta "\<(alignas|alignof|static_assert|thread_local)\>"
 color magenta "\<(const|dynamic|reinterpret|static)_cast\>"
 color magenta "\<(and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|xor|xor_eq)\>"
-color magenta "\<(__asm__|asm|auto|class|decltype|delete|enum|explicit|extern|false|final|friend|inline|mutable|namespace|new|noexcept|operator|override|private|protected|public|register|sizeof|static|struct|template|this|true|typedef|typeid|typename|union|using|virtual)\>"
+color magenta "\<(__asm__|asm|auto|class|constexpr|decltype|delete|enum|explicit|extern|false|final|friend|inline|mutable|namespace|new|noexcept|operator|override|private|protected|public|register|sizeof|static|struct|template|this|true|typedef|typeid|typename|union|using|virtual)\>"
 
 # Flow control.
 color brightyellow "\<(if|else|for|while|do|switch|case|default)\>"
